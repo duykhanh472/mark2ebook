@@ -1,23 +1,24 @@
-# mark2epub
+# `mark2ebook`
 
 A Python tool for converting directories of Markdown files to high-quality EPUB 3 ebooks matching the typography and standards of Standard Ebooks.
 
 ## Description
 
-`mark2epub` is a Python utility designed to convert Markdown documents, images, and custom stylesheets into standards-compliant, beautifully typeset **EPUB 3** ebooks. It directly incorporates the award-winning typography rules and layout stylesheets (`core.css`, `se.css`) developed by [Standard Ebooks](https://standardebooks.org), producing digital publications that render consistently and elegantly across reading systems such as Apple Books, Kobo, Kindle, and Calibre.
+`mark2ebook` is a Python utility designed to convert Markdown documents, images, and custom stylesheets into standards-compliant, beautifully typeset **EPUB 3** ebooks. It directly incorporates the award-winning typography rules and layout stylesheets (`core.css`, `se.css`) developed by [Standard Ebooks](https://standardebooks.org), producing digital publications that render consistently and elegantly across reading systems such as Apple Books, Kobo, Kindle, and Calibre.
 
 Every book project requires a configuration file (`book.yml`) and a source directory (`src/`) containing the chapter files and assets.
 
 Key highlights:
-* **Standard Ebooks Typography**: Built-in CSS with small-caps headings, elegant paragraph indentation, drop-caps, table styling, blockquotes, and optimized Dark Mode support.
-* **Strict OCF & EPUB 3 Compliance**: Uncompressed `mimetype` (`ZIP_STORED`) written first at byte offset 0, ensuring 100% validity across EPUB validation tools.
-* **Structured Book Layout**: Strict and predictable project structure requiring `book.yml` metadata and a `src/` content directory.
-* **Natural Alphanumeric Sorting**: Orders numbered chapters naturally (`1. Introduction`, `2. Chapter`, ..., `9. Chapter`, `10. Movement`).
-* **Clean Cover Handling**: Cover images are registered in the package manifest as `properties="cover-image"` for reader library shelves without injecting awkward synthetic cover pages into the text flow.
-* **Smart Typography**: Automatic conversion of straight quotes to curly quotes (`“ ”`, `‘ ’`), dashes (`—`, `–`), and ellipses (`…`).
-* **Code Syntax Highlighting**: Integrated Pygments styling for syntax-highlighted code blocks (`:::python`, fenced code).
-* **Dual Navigation**: Builds an EPUB 3 Navigation Document (`toc.xhtml` with landmarks) alongside a backwards-compatible NCX (`toc.ncx`).
-* **Accessibility**: Embedded WCAG 2.2 Level AA / EPUB Accessibility 1.1 metadata.
+
+* Standard Ebooks Typography: Built-in CSS with small-caps headings, elegant paragraph indentation, drop-caps, table styling, blockquotes, and optimized Dark Mode support.
+* Strict OCF & EPUB 3 Compliance: Uncompressed `mimetype` (`ZIP_STORED`) written first at byte offset 0, ensuring 100% validity across EPUB validation tools.
+* Structured Book Layout: Strict and predictable project structure requiring `book.yml` metadata and a `src/` content directory.
+* Natural Alphanumeric Sorting: Orders numbered chapters naturally (`1. Introduction`, `2. Chapter`, ..., `9. Chapter`, `10. Movement`).
+* Clean Cover Handling: Cover images are registered in the package manifest as `properties="cover-image"` for reader library shelves without injecting awkward synthetic cover pages into the text flow.
+* Smart Typography: Automatic conversion of straight quotes to curly quotes (`“ ”`, `‘ ’`), dashes (`—`, `–`), and ellipses (`…`).
+* Code Syntax Highlighting: Integrated Pygments styling for syntax-highlighted code blocks (`:::python`, fenced code).
+* Dual Navigation: Builds an EPUB 3 Navigation Document (`toc.xhtml` with landmarks) alongside a backwards-compatible NCX (`toc.ncx`).
+* Accessibility: Embedded WCAG 2.2 Level AA / EPUB Accessibility 1.1 metadata.
 
 ## Getting Started
 
@@ -35,8 +36,8 @@ Key highlights:
 
 1. Clone or download this repository:
 ```bash
-git clone https://github.com/willfreee/mark2epub.git
-cd mark2epub
+git clone https://github.com/duykhanh472/mark2ebook.git
+cd mark2ebook
 ```
 
 2. Install the necessary Python packages:
@@ -47,6 +48,7 @@ pip install markdown PyYAML beautifulsoup4 Pygments
 ### Executing program
 
 #### 1. Required Project Structure
+
 The target book folder **must** contain a `book.yml` configuration file and a `src/` directory holding your Markdown chapters and optional assets:
 
 ```text
@@ -62,6 +64,7 @@ my-book/
 ```
 
 #### 2. Configuration (`book.yml`)
+
 Define your book metadata and chapter order in `book.yml`:
 ```yaml
 title: Pride and Prejudice
@@ -79,6 +82,7 @@ chapters:
 > * If `cover` is not specified, `mark2epub` automatically searches `src/images/` or `src/` for `cover.jpg`, `cover.png`, or `cover.webp`.
 
 #### 3. Running the Converter
+
 Run `mark2epub` by pointing to the book directory (supports both relative and absolute paths):
 
 ```bash
@@ -90,6 +94,7 @@ python3 mark2epub.py path/to/my-book/ output-book.epub
 ```
 
 #### 4. Command-line Options
+
 ```bash
 # Explicitly generate a synthetic titlepage inside the book spine
 python3 mark2epub.py path/to/my-book/ --titlepage
@@ -104,8 +109,6 @@ Common issues and troubleshooting tips:
 
 * **Missing `book.yml` or `src/` error**:
   `mark2epub` strictly requires both `book.yml` and the `src/` folder to be present at the root of the book directory. Ensure your directory follows the required layout.
-* **Missing dependencies error**:
-  Run `pip install markdown PyYAML beautifulsoup4 Pygments` to ensure all required libraries are installed in your active Python environment.
 * **Image path resolution**:
   Images referenced in Markdown as `images/sample.png` or `![diagram](images/sample.png)` are automatically normalized to `../images/sample.png` in the compiled XHTML chapters.
 * **Cover images**:
@@ -117,7 +120,7 @@ python3 mark2epub.py -h
 
 ## Authors
 
-* **Duy Khanh** - *Maintainer & Developer* - [@duykhanh471](https://github.com/duykhanh471)
+* **AlexPof** - *Developer of `mark2epub.py* - [AlexPof/mark2epub](https://github.com/AlexPof/mark2epub)
 * **Standard Ebooks** - *Typography stylesheets & EPUB standards* - [standardebooks.org](https://standardebooks.org)
 
 ## Version History
@@ -135,7 +138,7 @@ python3 mark2epub.py -h
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE.md file for details.
+This project is licensed under [The Unlicense](https://unlicense.org/).
 
 ## Acknowledgments
 
